@@ -44,10 +44,8 @@ if foto_camara is not None:
     st.subheader("Datos Métricos")
     st.metric(label="¨Personas detectadas", value=len(rostros))
     if len(rostros) > 0:
-         st.success("Persona detectada")
-    else: st.warning("No se detecto ninguna persona")
-         
-
-
+        st.success("Persona detectada")
+    else:
+        st.warning("No se detecto ninguna persona")
 
     st.button(label="Capturar imagen")
