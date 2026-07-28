@@ -8,8 +8,7 @@ from PIL import Image
 st.set_page_config(page_title="Trabajo Final Curso Machine Learning", layout="centered")
 st.title("Trabajo Final- Monitor Biometrico Web")
 
-face_cascade_path = cv2.data.haarcascades + 'haarcascade_frontalface_default.xml'
-face_cascade = cv2.CascadeClassifier(face_cascade_path)
+face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
 
 if face_cascade.empty():
     st.error("No se pudo cargar el clasificador de rostros. La app puede no funcionar correctamente en este entorno.")
