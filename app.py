@@ -6,11 +6,16 @@ from PIL import Image
 ## Primera Parte, Capturar imagen y definir la interfaz grafica.
 
 st.set_page_config(page_title="Trabajo Final Curso Machine Learning", layout="centered")
-st.title("Trabajo Final- Monitor Biometrico Web") 
+st.title("Trabajo Final- Monitor Biometrico Web")
 
-face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
+face_cascade_path = cv2.data.haarcascades + 'haarcascade_frontalface_default.xml'
+face_cascade = cv2.CascadeClassifier(face_cascade_path)
 
-col1, col2, col3 = st.columns([1,2,1])
+if face_cascade.empty():
+    st.error("No se pudo cargar el clasificador de rostros. La app puede no funcionar correctamente en este entorno.")
+    st.stop()
+
+col1, col2, col3 = st.columns([1, 2, 1])
 with col2:
     foto_camara = st.camera_input(label="Capturar imagen para el monitor biometrico")
 
